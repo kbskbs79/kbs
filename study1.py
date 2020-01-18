@@ -31,7 +31,7 @@ while n > 0:
     print(n)
     n -= 1   # n = n-1
 
-    #while, for, if, comtinue, break 함수
+    # while, for, if, comtinue, break 함수 학습
 
 True and True
 True and False
@@ -49,3 +49,5 @@ print(a==1 and b==2)
 print(a==2 and b==2)
 print(a==1 and b==3)
 print(a==1 or b==2)
+print(a==2 or b==2)
+print(a==1 or b==3)
