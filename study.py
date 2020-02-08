@@ -396,3 +396,84 @@ if x > 99: # 100보다 크면, 세자리 수이기 때문에 함수 A(x) 적용
     print(count + 99) # 100보다 작은 수는 등차이기때문에 합산
 else:
     print(x)
+
+
+n = ord(input())
+print(n)
+#ord(c)는 파라미터c의 유니코드 int 값을 return해 줍니다. 반대로 int값을 character로 변환할 때는 chr(i)함수를 씁니다. chr(i)는 아스키코드 i와 대응하는 문자열(len=1)을 return해 줍니다.
+
+
+n = int(input())
+a = input()
+sum = 0
+for i in range(n):
+    sum += int(a[i])
+print(sum)
+
+n = int(input())
+a = input()
+sum = 0
+for i in a:
+    sum += int(i)
+print(sum)
+# 상위식 개선1
+
+def acc(x, y):
+    return int(x) + int(y)
+from functools import reduce
+n = int(input())
+num = input()
+sum = reduce(acc, num)
+print(sum)
+# 상위식 개선2
+
+from functools import reduce
+n = int(input())
+num = input()
+sum = reduce(lambda x, y: int(x) + int(y), num)
+print(sum)
+# 상위식 개선3
+
+# string 모듈
+# import string
+# string.ascii_lowercase # 소문자 abcdefghijklmnopqrstuvwxyz
+# string.ascii_uppercase # 대문자 ABCDEFGHIJKLMNOPQRSTUVWXYZ
+# string.ascii_letters #대소문자 모두 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+# string.digits # 숫자 0123456789
+
+import string
+n = input()
+a = list(string.ascii_lowercase)
+for i in a:
+    print(n.find(i), end=" ")
+
+# 상위식 개선
+import string
+n = input()
+a = list(string.ascii_lowercase)
+b = list(map(lambda x: print(n.find(x), end=" "), a))
+# 게으른 실행의 개념을 알아야 이해할 수 있음
+
+
+T = int(input())
+for j in range(T):
+    a, b = input().split()
+    a = int(a)
+    for i in b:
+        print(i*a, end ="")
+    print()
+# 테스트 갯수가 있고, 한줄로 출력이 될 경우에는 공백을 입력하기 위해 print()를 입력
+
+
+import string
+w = input()
+W = w.upper()
+l = list(string.ascii_uppercase)
+b = list(map(lambda x: W.count(x), l))
+c = b.index(max(b))
+if b.count(c) == 1:
+    d = l[c]
+    print(d)
+else:
+    print("?")
+# 위 문제를 dic으로 풀려면 어떻게 해야 하는가??
