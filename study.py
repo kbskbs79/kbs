@@ -271,10 +271,20 @@ while True:
 		break
 print(count)
 
+N = X = int(input())
+count = 0
+while True:
+    N = int(str(N % 10) + str((N // 10 + N % 10) % 10))
+    count += 1
+    if N == X:
+        break
+print(count)
+# 위, 아래 동일
+
 
 a = int(input())
 b = list(map(int,input().split()))
-print('{} {}'.format(min(b),max(b)))
+print('{} {}'.format(min(b),max(b)))   # print(min(b),max(b))도 문제 없음.
 # '{} {}'.format() : {} 대괄호 안에 아무 숫자도 입력하지 않으면, format 안에 들어있는 값들이 처음부터 차례대로 출력.
 # {}안에 숫자를 넣으면 format 안에 입력된 순서에 따라 입력값을 불러온다. print('{1}'.format(min(b),max(b))) => max(b)값. 마찬가지로 0부터 순서
 # 리스트형 [], 튜플형 () : 리스트는 변경이 가능(가변적) 하고, 튜플은 변경이 불가능(불변적). 문자열도 튜플처럼 변경이 불가능한 자료형
@@ -300,6 +310,8 @@ print(number[:3])  # 미만
 print(number[1:3:2])  # 1이상 3미만 2개씩
 print(number[0:9:2])  # 0이상 9미만 2개씩
 print(number[::-1])  # 거꾸로
+print(number[]::2]) # 처음부터 끝까지 두 칸 간격으로
+print(number[]::-2]) # 처음부터 끝까지 역순 두 칸 간격으로
 
 
 a = int(input())
@@ -477,3 +489,152 @@ if b.count(c) == 1:
 else:
     print("?")
 # 위 문제를 dic으로 풀려면 어떻게 해야 하는가??
+
+
+X = input().upper() #대문자로 통일해서 받음
+l = [i for i in range(0,26)] #길이가 26인 리스트 생성
+for i in range(0,26):
+    l[i] = X.count(chr(i+65)) #X의 A-Z가 몇개인지 센다.
+M = max(l) #C리스트의 가장 큰 숫자
+if l.count(M) >= 2: #가장 큰 숫자가 2개 이상이면
+    print('?') #? 출력
+else: #가장 큰 숫자가 1개라면 C리스트에 있는 큰 수의 인덱스를 찾아 65를 더하고 대문자로 만듦
+    print(chr(l.index(M)+65))
+# 배열의 초기화 - 배열을 0으로 100개 초기화: l = [0]*100  / 임의의 아이템 e를 n번 나타내려면 l = [e] * n / 0~99까지 넣어 초기화 l = [i for i in range(0,100)]
+
+
+a=input().split()
+print(len(a))
+
+a = list(map(str,input().split()))
+print(len(a))
+# 위 아래 동일
+
+
+a = input()[::-1].split() # [::-1] 입력을 역순으로 저장
+print(max(a))
+
+
+a = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'  #1
+b = '2223334445556667778889999'
+sum = 0
+for i in input():
+    sum += int(b[a.index(i)])+1
+print(sum)
+
+W = input().lower()  #2
+l = ['abc','def','ghi','jkl','mno','pqrs','tuv','wxyz']
+sum = 0
+for i in range(len(W)):
+    for j in l:
+        if W[i] in j:
+            sum += l.index(j) + 3
+print(sum)
+
+print(sum(min(ord(c)-64,25)*28//89+3 for c in input()))  #3
+# 1,2,3은 동일...
+
+
+x = input()
+a = ['c=','c-','dz=','d-','lj','nj','s=','z=']
+for i in a:
+    x = x.replace(i,'a')
+print(len(x))
+
+
+a = int(input())
+l = []
+for i in range(a):
+    w = list(str(input()))
+
+    for k in range(len(w)):
+        if k != len(w) - 1 and w[k] == w[k + 1]:
+            pass
+        elif w[k + 1:].count(w[k]) != 0:
+            break
+        elif k == len(w) - 1:
+            l.append(i)
+print(len(l))
+
+
+# 파보나치 수열 역순일때 재귀함수를 쓴다.
+def fibo(n):
+    if n==1 or n==2:
+        return 1
+    return fibo(n-1)+fibo(n-2)
+
+
+
+# 숙제
+
+
+# T개의 원소를 가진 리스트와 특정값 N이 1항에 입력
+# 리스트의 원소를 입력
+# 리스트 원소 중 N으로 나누어 떨어지지 않는 수를 출력하라
+
+T, N = map(int,input().split())
+l = list(map(int,input().split()))
+A = []
+for i in l:
+    if int(i) % N == 0: # 여기서 오류 났음 if int(a(i)) % N == 0:라고 했....
+        A.append(i)
+    else:
+        None
+print(A)
+
+
+# 리스트 원소 개수 입력
+# 리스트 입력
+# 가장 많이 등장하는 수 출력
+
+X = int(input())
+l = list(map(int,input().split()))
+a= []
+for i in l:
+    a[i] = l.count(i) # a의 원소를 추가 해야...... 몇번째 원소가 몇번 등장했는지 알아야...DIC 써서 처리
+print(max(a))
+
+
+# 숫자 개수 입력
+# 숫자 개수만큼의 원소 입력
+# 최대값, 최소값, 최소값이 나중에 오면 True, 최대값이 나중에 오면 false 출력
+
+x = int(input())
+l = list(map(int,input().split()))
+if int(index(max(l))) > int(index(min(l))):
+print(max(l),min(l))
+
+
+# 숫자 개수 입력
+# 숫자 개수만큼의 원소 입력
+# 붙어있는 숫자의 차이를 출력(절대값)
+
+x = int(input())
+l = list(map(int,input().split()))
+A = []
+for i in range(x-1): # 원소개수의 차이기 때문에 원소의 갯수가 1개 줄어든다!
+    A.append(abs(l[i+1]-l[i]))
+print(A)
+
+# 함수를 정의
+# n을 입력 시 [0~n-1) 출력
+
+n = int(input())
+def my_range(n):
+    l = []
+    while n > 0:
+        l.append(n-1)
+        n -= 1
+    return l[::-1]  #l.reverse()와 동일
+print(my_range(n))
+
+n = int(input())
+def my_range(n):
+    l = []
+    while n > 0:
+        l.append(n-1)
+        n -= 1
+    l.reverse()
+    return l
+print(my_range(n))
+# 위 아래 동일. l.reverse()가 while안에 들어가면 다른 결과. 확인해볼 것
