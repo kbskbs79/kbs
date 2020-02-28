@@ -573,26 +573,30 @@ def fibo(n):
 # 리스트 원소 중 N으로 나누어 떨어지지 않는 수를 출력하라
 
 T, N = map(int,input().split())
-l = list(map(int,input().split()))
-A = []
-for i in l:
-    if int(i) % N == 0: # 여기서 오류 났음 if int(a(i)) % N == 0:라고 했....
-        A.append(i)
+A = list(map(int,input().split()))
+for i in A:
+    if i % N == 0:
+        pass
     else:
-        None
-print(A)
+        print(i,"",end="")
 
 
 # 리스트 원소 개수 입력
 # 리스트 입력
 # 가장 많이 등장하는 수 출력
 
+from collections import Counter
 X = int(input())
 l = list(map(int,input().split()))
-a= []
-for i in l:
-    a[i] = l.count(i) # a의 원소를 추가 해야...... 몇번째 원소가 몇번 등장했는지 알아야...DIC 써서 처리
-print(max(a))
+c = Counter(l)
+print(c.most_common(1))
+# 답에서 빈도수 빼고 최빈값만 노출하는 방법?
+
+import numpy as np
+X = int(input())
+l = list(map(int,input().split()))
+a = np.bincount(l)
+print(a)
 
 
 # 숫자 개수 입력
@@ -601,8 +605,11 @@ print(max(a))
 
 x = int(input())
 l = list(map(int,input().split()))
-if int(index(max(l))) > int(index(min(l))):
-print(max(l),min(l))
+M = int(l.index(max(l))) - int(l.index(min(l)))
+if M < 0:
+    print('true')
+else:
+    print('false')
 
 
 # 숫자 개수 입력
@@ -638,3 +645,13 @@ def my_range(n):
     return l
 print(my_range(n))
 # 위 아래 동일. l.reverse()가 while안에 들어가면 다른 결과. 확인해볼 것
+
+week_dict = dict()
+week_dict['Mon'] = '맑음'
+week_dict['Tue'] = '구름'
+week_dict['Wed'] = '비'
+print(week_dict)
+weather = week_dict['Wed']
+print(weather)
+# dict 기초
+
